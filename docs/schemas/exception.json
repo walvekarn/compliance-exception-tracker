@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Exception",
+  "description": "Compliance exception create/update payload",
+  "type": "object",
+  "properties": {
+    "vendorId": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "exceptionType": {
+      "type": "string",
+      "enum": ["Documentation", "Control Gap", "Audit Finding", "Policy Deviation"]
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["Critical", "High", "Medium", "Low"]
+    },
+    "assignedToId": { "type": "string", "minLength": 1 },
+    "managerId": { "type": "string", "minLength": 1 },
+    "status": {
+      "type": "string",
+      "enum": ["Open", "In Progress", "Pending Review", "Resolved", "Closed", "Escalated"]
+    },
+    "dateCreated": { "type": "string", "format": "date" },
+    "description": { "type": "string" },
+    "dueDate": { "type": "string", "format": "date" },
+    "dateResolved": { "type": "string", "format": "date" },
+    "resolutionNotes": { "type": "string" }
+  },
+  "required": ["vendorId", "title", "exceptionType", "severity", "assignedToId", "managerId", "status", "dateCreated"],
+  "additionalProperties": false
+}

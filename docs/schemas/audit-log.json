@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AuditLogEntry",
+  "description": "Single audit log entry for an exception",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "exceptionId": { "type": "string" },
+    "userId": { "type": "string" },
+    "timestampUtc": { "type": "string", "format": "date-time" },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "field": { "type": "string" },
+          "oldValue": {},
+          "newValue": {}
+        },
+        "required": ["field", "oldValue", "newValue"]
+      }
+    }
+  },
+  "required": ["id", "exceptionId", "userId", "timestampUtc", "changes"],
+  "additionalProperties": false
+}
